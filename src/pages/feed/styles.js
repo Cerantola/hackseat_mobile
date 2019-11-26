@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {LogoImage} from '../../assets';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.View`
   flex: 1;
   background-color: #333;
 `;
@@ -15,7 +15,7 @@ export const CreatePost = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: 0.8,
 }))`
   width: 85%;
-  border-radius: 8px;
+  border-radius: 3px;
   background-color: #00c3ef;
   padding: 10px 0;
   align-self: center;

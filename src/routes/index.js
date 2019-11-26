@@ -37,15 +37,7 @@ const App = createStackNavigator(
     Feed: {
       screen: Feed,
       navigationOptions: {
-        header: (
-          <Header
-            backButton={false}
-            rightContent={<RightText>Sair</RightText>}
-            rightAction={() => {
-              // do logoff
-            }}
-          />
-        ),
+        header: null,
       },
     },
     CreatePost: {
@@ -62,7 +54,7 @@ const App = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'CreatePost',
+    initialRouteName: 'Feed',
   },
 );
 

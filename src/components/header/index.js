@@ -10,19 +10,23 @@ import {
   SafeContainer,
 } from './styles';
 import {View} from 'react-native';
+import {withNavigation} from 'react-navigation';
 
-export default function Header({
+function Header({
   backButton = true,
   title = false,
   rightContent = () => {},
   rightAction = () => {},
+  navigation,
 }) {
   return (
     <>
       <SafeContainer />
       <Container>
         <InfoContainer>
-          <Clickable>{backButton && <Back />}</Clickable>
+          <Clickable onPress={() => navigation.goBack()}>
+            {backButton && <Back />}
+          </Clickable>
 
           {title ? <Title>{title}</Title> : <Logo />}
 
@@ -34,3 +38,5 @@ export default function Header({
     </>
   );
 }
+
+export default withNavigation(Header);
