@@ -10,6 +10,8 @@ import {
   ButtonContainer,
   Button,
   ButtonText,
+  LoginTextContainer,
+  LoginText,
 } from './styles';
 
 export default function Register() {
@@ -36,6 +38,10 @@ export default function Register() {
           <ButtonText>Criar</ButtonText>
         </Button>
       </ButtonContainer>
+
+      <LoginTextContainer>
+        <LoginText>Já tem uma conta? Entre!</LoginText>
+      </LoginTextContainer>
     </Container>
   );
 }

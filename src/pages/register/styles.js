@@ -55,6 +55,19 @@ export const Button = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
+  font-size: 16px;
   color: #fff;
   font-weight: bold;
+`;
+
+export const LoginTextContainer = styled.TouchableOpacity`
+  width: 100%;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LoginText = styled.Text`
+  font-size: 12px;
+  color: #c1c1c1;
 `;
