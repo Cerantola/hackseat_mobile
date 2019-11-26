@@ -1,5 +1,14 @@
 import styled from 'styled-components';
+import {Keyboard} from 'react-native';
 import {LogoImage} from '../../assets';
+
+export const KeyboardSafeContainer = styled.TouchableWithoutFeedback.attrs(
+  () => ({
+    onPress: () => Keyboard.dismiss(),
+  }),
+)`
+  flex: 1;
+`;
 
 export const Container = styled.SafeAreaView`
   flex: 1;

@@ -13,29 +13,34 @@ import {
   LoginTextContainer,
   LoginText,
 } from './styles';
+import {KeyboardSafeContainer} from '../register/styles';
 
 export default function Login({navigation}) {
   return (
-    <Container>
-      <LogoContainer>
-        <Logo />
-      </LogoContainer>
+    <KeyboardSafeContainer>
+      <Container>
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
 
-      <InputContainer>
-        <InputContent>
-          <Input placeholder={'Digite seu e-mail'} />
-        </InputContent>
-      </InputContainer>
+        <InputContainer>
+          <InputContent>
+            <Input placeholder={'Digite seu e-mail'} />
+          </InputContent>
+        </InputContainer>
 
-      <ButtonContainer>
-        <Button>
-          <ButtonText>Entrar</ButtonText>
-        </Button>
-      </ButtonContainer>
+        <ButtonContainer>
+          <Button>
+            <ButtonText onPress={() => navigation.navigate('Feed')}>
+              Entrar
+            </ButtonText>
+          </Button>
+        </ButtonContainer>
 
-      <LoginTextContainer onPress={() => navigation.navigate('Register')}>
-        <LoginText>Cadastre-se</LoginText>
-      </LoginTextContainer>
-    </Container>
+        <LoginTextContainer onPress={() => navigation.navigate('Register')}>
+          <LoginText>Cadastre-se</LoginText>
+        </LoginTextContainer>
+      </Container>
+    </KeyboardSafeContainer>
   );
 }

@@ -16,6 +16,7 @@ import {
   TypeUsersTextContainer,
   TypeUsersText,
   TypeUsersButtonText,
+  KeyboardSafeContainer,
 } from './styles';
 
 import {ButtonGroup} from 'react-native-elements';
@@ -33,49 +34,51 @@ export default function Register({navigation}) {
   };
 
   return (
-    <Container>
-      <LogoContainer>
-        <Logo />
-      </LogoContainer>
+    <KeyboardSafeContainer>
+      <Container>
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
 
-      <InputContainer>
-        <InputContent>
-          <Input placeholder={'Digite seu nome'} />
-        </InputContent>
-      </InputContainer>
+        <InputContainer>
+          <InputContent>
+            <Input placeholder={'Digite seu nome'} />
+          </InputContent>
+        </InputContainer>
 
-      <InputContainer>
-        <InputContent>
-          <Input placeholder={'Digite seu e-mail'} />
-        </InputContent>
-      </InputContainer>
+        <InputContainer>
+          <InputContent>
+            <Input placeholder={'Digite seu e-mail'} />
+          </InputContent>
+        </InputContainer>
 
-      <TypeUsersContainer>
-        <TypeUsersTextContainer>
-          <TypeUsersText>Selecione o seu tipo de usuário</TypeUsersText>
-        </TypeUsersTextContainer>
+        <TypeUsersContainer>
+          <TypeUsersTextContainer>
+            <TypeUsersText>Selecione o seu tipo de usuário</TypeUsersText>
+          </TypeUsersTextContainer>
 
-        <ButtonGroup
-          onPress={updateIndex}
-          selectedIndex={selectedIndex}
-          buttons={buttons}
-          containerStyle={{
-            height: 50,
-            borderColor: '#00c3e0',
-          }}
-          selectedButtonStyle={{backgroundColor: '#232222'}}
-        />
-      </TypeUsersContainer>
+          <ButtonGroup
+            onPress={updateIndex}
+            selectedIndex={selectedIndex}
+            buttons={buttons}
+            containerStyle={{
+              height: 50,
+              borderColor: '#00c3e0',
+            }}
+            selectedButtonStyle={{backgroundColor: '#232222'}}
+          />
+        </TypeUsersContainer>
 
-      <ButtonContainer>
-        <Button onPress={() => navigation.navigate('Feed')}>
-          <ButtonText>Criar</ButtonText>
-        </Button>
-      </ButtonContainer>
+        <ButtonContainer>
+          <Button onPress={() => navigation.navigate('Feed')}>
+            <ButtonText>Criar</ButtonText>
+          </Button>
+        </ButtonContainer>
 
-      <LoginTextContainer>
-        <LoginText>Já tem uma conta? Entre!</LoginText>
-      </LoginTextContainer>
-    </Container>
+        <LoginTextContainer onPress={() => navigation.navigate('Login')}>
+          <LoginText>Já tem uma conta? Entre!</LoginText>
+        </LoginTextContainer>
+      </Container>
+    </KeyboardSafeContainer>
   );
 }
