@@ -39,7 +39,7 @@ export default function Register({navigation}) {
         </Button>
       </ButtonContainer>
 
-      <LoginTextContainer>
+      <LoginTextContainer onPress={() => navigation.navigate('Login')}>
         <LoginText>Já tem uma conta? Entre!</LoginText>
       </LoginTextContainer>
     </Container>
