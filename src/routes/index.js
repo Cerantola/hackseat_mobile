@@ -4,6 +4,8 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Register from '../pages/register';
 import Feed from '../pages/feed';
+import CreatePost from '../pages/feed/components/createPost';
+import PostDetails from '../pages/feed/components/post/components/postDetails';
 import Login from '../pages/login';
 import Header from '../components/header';
 import {RightText} from '../components/header/styles';
@@ -46,9 +48,21 @@ const App = createStackNavigator(
         ),
       },
     },
+    CreatePost: {
+      screen: CreatePost,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    PostDetails: {
+      screen: PostDetails,
+      navigationOptions: {
+        header: null,
+      },
+    },
   },
   {
-    initialRouteName: 'Feed',
+    initialRouteName: 'CreatePost',
   },
 );
 

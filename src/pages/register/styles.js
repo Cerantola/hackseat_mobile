@@ -86,7 +86,7 @@ export const TypeUsersContainer = styled.View`
   padding: 10px;
 `;
 
-export const TypeUsersTextContainer = styled.Text`
+export const TypeUsersTextContainer = styled.View`
   width: 100%;
   padding-horizontal: 10px;
 `;
