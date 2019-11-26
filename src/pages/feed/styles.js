@@ -14,7 +14,7 @@ export const List = styled.FlatList`
 export const CreatePost = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: 0.8,
 }))`
-  width: 75%;
+  width: 85%;
   border-radius: 8px;
   background-color: #00c3ef;
   padding: 10px 0;
