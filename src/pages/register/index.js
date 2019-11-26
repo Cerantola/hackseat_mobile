@@ -1,18 +1,12 @@
 import React from 'react';
 
-import {
-  Container,
-  LogoContainer,
-  LogoText,
-  InputContainer,
-  Input,
-} from './styles';
+import {Container, LogoContainer, Logo, InputContainer, Input} from './styles';
 
 export default function Register() {
   return (
     <Container>
       <LogoContainer>
-        <LogoText>HACKSEAT</LogoText>
+        <Logo />
       </LogoContainer>
 
       <InputContainer>

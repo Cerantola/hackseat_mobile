@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {LogoImage} from '../../assets';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -13,10 +14,11 @@ export const LogoContainer = styled.View`
   justify-content: center;
 `;
 
-export const LogoText = styled.Text`
-  font-weight: bold;
-  font-size: 24px;
-  color: #00c3e0;
+export const Logo = styled.Image.attrs(() => ({
+  source: LogoImage,
+  resizeMode: 'contain',
+}))`
+  width: 60%;
 `;
 
 export const InputContainer = styled.View`
