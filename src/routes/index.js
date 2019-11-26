@@ -2,8 +2,8 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Register from '../pages/register';
-import Login from '../pages/login';
 import Feed from '../pages/feed';
+import Login from '../pages/login';
 import Header from '../components/header';
 import {RightText} from '../components/header/styles';
 
@@ -27,10 +27,7 @@ const AppNavigator = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'Register',
-    defaultNavigationOptions: {
-      header: null,
-    },
+    initialRouteName: 'Feed',
   },
 );
 
