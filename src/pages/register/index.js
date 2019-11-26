@@ -15,7 +15,7 @@ import {
   KeyboardSafeContainer,
 } from './styles';
 
-export default function Register() {
+export default function Register({navigation}) {
   return (
     <KeyboardSafeContainer>
       <Container>
@@ -36,12 +36,12 @@ export default function Register() {
         </InputContainer>
 
         <ButtonContainer>
-          <Button>
+          <Button onPress={() => navigation.navigate('Feed')}>
             <ButtonText>Criar</ButtonText>
           </Button>
         </ButtonContainer>
 
-        <LoginTextContainer>
+        <LoginTextContainer onPress={() => navigation.navigate('Login')}>
           <LoginText>Já tem uma conta? Entre!</LoginText>
         </LoginTextContainer>
       </Container>
