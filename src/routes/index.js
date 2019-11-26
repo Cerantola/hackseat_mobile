@@ -4,6 +4,7 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Register from '../pages/register';
 import Feed from '../pages/feed';
+import Login from '../pages/login';
 
 const AppNavigator = createStackNavigator(
   {
@@ -16,6 +17,7 @@ const AppNavigator = createStackNavigator(
     Feed: {
       screen: Feed,
     },
+    Login,
   },
   {
     initialRouteName: 'Feed',
