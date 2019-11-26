@@ -1,12 +1,20 @@
 import styled from 'styled-components/native';
 import {ArrowLeft, LogoImage} from '../../assets';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
+import {Platform} from 'react-native';
 
 export const Container = styled.View`
   height: 60px;
   background-color: #232222;
-  padding-top: ${getStatusBarHeight()}px;
 `;
+
+export const SafeContainer = Platform.select({
+  ios: styled.View`
+    background-color: #232222;
+    height: ${getStatusBarHeight()}px;
+  `,
+  android: styled.View``,
+});
 
 export const InfoContainer = styled.View`
   width: 98%;

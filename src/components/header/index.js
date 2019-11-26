@@ -1,6 +1,14 @@
 import React from 'react';
 
-import {Container, InfoContainer, Clickable, Back, Logo, Title} from './styles';
+import {
+  Container,
+  InfoContainer,
+  Clickable,
+  Back,
+  Logo,
+  Title,
+  SafeContainer,
+} from './styles';
 import {View} from 'react-native';
 
 export default function Header({
@@ -10,16 +18,19 @@ export default function Header({
   rightAction = () => {},
 }) {
   return (
-    <Container>
-      <InfoContainer>
-        <Clickable>{backButton && <Back />}</Clickable>
+    <>
+      <SafeContainer />
+      <Container>
+        <InfoContainer>
+          <Clickable>{backButton && <Back />}</Clickable>
 
-        {title ? <Title>{title}</Title> : <Logo />}
+          {title ? <Title>{title}</Title> : <Logo />}
 
-        <View>
-          <Clickable onPress={rightAction}>{rightContent}</Clickable>
-        </View>
-      </InfoContainer>
-    </Container>
+          <View>
+            <Clickable onPress={rightAction}>{rightContent}</Clickable>
+          </View>
+        </InfoContainer>
+      </Container>
+    </>
   );
 }
