@@ -1,4 +1,5 @@
 import React from 'react';
+import AsyncStorage from '@react-native-community/async-storage';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Register from '../pages/register';
@@ -7,10 +8,30 @@ import Login from '../pages/login';
 import Header from '../components/header';
 import {RightText} from '../components/header/styles';
 
-const AppNavigator = createStackNavigator(
+const signedIn = AsyncStorage.getItem('userlogged') && false;
+
+const Sign = createStackNavigator(
   {
-    Register,
-    Login,
+    Register: {
+      screen: Register,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        header: null,
+      },
+    },
+  },
+  {
+    initialRouteName: 'Login',
+  },
+);
+
+const App = createStackNavigator(
+  {
     Feed: {
       screen: Feed,
       navigationOptions: {
@@ -31,4 +52,4 @@ const AppNavigator = createStackNavigator(
   },
 );
 
-export default createAppContainer(AppNavigator);
+export default createAppContainer(signedIn ? App : Sign);
