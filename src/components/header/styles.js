@@ -1,9 +1,11 @@
 import styled from 'styled-components/native';
 import {ArrowLeft, LogoImage} from '../../assets';
+import {getStatusBarHeight} from 'react-native-status-bar-height';
 
 export const Container = styled.View`
   height: 60px;
   background-color: #232222;
+  padding-top: ${getStatusBarHeight()}px;
 `;
 
 export const InfoContainer = styled.View`
@@ -20,6 +22,7 @@ export const Clickable = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   width: 50px;
+  background-color: transparent;
 `;
 
 export const Back = styled.Image.attrs(() => ({
