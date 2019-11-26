@@ -14,7 +14,7 @@ import {
   LoginText,
 } from './styles';
 
-export default function Register() {
+export default function Register({navigation}) {
   return (
     <Container>
       <LogoContainer>
@@ -34,7 +34,7 @@ export default function Register() {
       </InputContainer>
 
       <ButtonContainer>
-        <Button>
+        <Button onPress={() => navigation.navigate('Feed')}>
           <ButtonText>Criar</ButtonText>
         </Button>
       </ButtonContainer>
