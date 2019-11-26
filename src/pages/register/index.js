@@ -5,7 +5,11 @@ import {
   LogoContainer,
   LogoText,
   InputContainer,
+  InputContent,
   Input,
+  ButtonContainer,
+  Button,
+  ButtonText,
 } from './styles';
 
 export default function Register() {
@@ -16,8 +20,22 @@ export default function Register() {
       </LogoContainer>
 
       <InputContainer>
-        <Input placeholder={'Digite seu e-mail'} />
+        <InputContent>
+          <Input placeholder={'Digite seu nome'} />
+        </InputContent>
       </InputContainer>
+
+      <InputContainer>
+        <InputContent>
+          <Input placeholder={'Digite seu e-mail'} />
+        </InputContent>
+      </InputContainer>
+
+      <ButtonContainer>
+        <Button>
+          <ButtonText>Criar</ButtonText>
+        </Button>
+      </ButtonContainer>
     </Container>
   );
 }

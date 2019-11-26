@@ -9,6 +9,7 @@ export const Container = styled.SafeAreaView`
 
 export const LogoContainer = styled.View`
   width: 100%;
+  padding-vertical: 20px;
   align-items: center;
   justify-content: center;
 `;
@@ -21,14 +22,36 @@ export const LogoText = styled.Text`
 
 export const InputContainer = styled.View`
   width: 100%;
+  padding: 20px;
+`;
+
+export const InputContent = styled.View`
+  width: 100%;
   height: 50px;
-  margin-left: 2.5%;
   border-radius: 3px;
   background-color: #fff;
-  margin-top: 100px;
 `;
 
 export const Input = styled.TextInput`
   flex: 1;
   padding-horizontal: 10px;
+`;
+
+export const ButtonContainer = styled.View`
+  width: 100%;
+  padding: 20px;
+`;
+
+export const Button = styled.TouchableOpacity`
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background-color: #00c3e0;
+`;
+
+export const ButtonText = styled.Text`
+  color: #fff;
+  font-weight: bold;
 `;
