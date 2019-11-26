@@ -71,3 +71,22 @@ export const LoginText = styled.Text`
   font-size: 12px;
   color: #c1c1c1;
 `;
+
+export const TypeUsersContainer = styled.View`
+  width: 100%;
+  padding: 10px;
+`;
+
+export const TypeUsersTextContainer = styled.Text`
+  width: 100%;
+  padding-horizontal: 10px;
+`;
+
+export const TypeUsersText = styled.Text`
+  font-size: 12px;
+  color: #c1c1c1;
+`;
+
+export const TypeUsersButtonText = styled.Text`
+  color: #00c3e0;
+`;

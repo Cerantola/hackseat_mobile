@@ -14,13 +14,11 @@ const AppNavigator = createStackNavigator(
         header: null,
       },
     },
-    Feed: {
-      screen: Feed,
-    },
+    Feed,
     Login,
   },
   {
-    initialRouteName: 'Feed',
+    initialRouteName: 'Register',
   },
 );
 
