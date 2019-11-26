@@ -12,36 +12,39 @@ import {
   ButtonText,
   LoginTextContainer,
   LoginText,
+  KeyboardSafeContainer,
 } from './styles';
 
 export default function Register() {
   return (
-    <Container>
-      <LogoContainer>
-        <Logo />
-      </LogoContainer>
+    <KeyboardSafeContainer>
+      <Container>
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
 
-      <InputContainer>
-        <InputContent>
-          <Input placeholder={'Digite seu nome'} />
-        </InputContent>
-      </InputContainer>
+        <InputContainer>
+          <InputContent>
+            <Input placeholder={'Digite seu nome'} />
+          </InputContent>
+        </InputContainer>
 
-      <InputContainer>
-        <InputContent>
-          <Input placeholder={'Digite seu e-mail'} />
-        </InputContent>
-      </InputContainer>
+        <InputContainer>
+          <InputContent>
+            <Input placeholder={'Digite seu e-mail'} />
+          </InputContent>
+        </InputContainer>
 
-      <ButtonContainer>
-        <Button>
-          <ButtonText>Criar</ButtonText>
-        </Button>
-      </ButtonContainer>
+        <ButtonContainer>
+          <Button>
+            <ButtonText>Criar</ButtonText>
+          </Button>
+        </ButtonContainer>
 
-      <LoginTextContainer>
-        <LoginText>Já tem uma conta? Entre!</LoginText>
-      </LoginTextContainer>
-    </Container>
+        <LoginTextContainer>
+          <LoginText>Já tem uma conta? Entre!</LoginText>
+        </LoginTextContainer>
+      </Container>
+    </KeyboardSafeContainer>
   );
 }
