@@ -8,7 +8,7 @@ import Login from '../pages/login';
 import transitionConfig from '../config/transition';
 import Exercicio from '../pages/exercicio';
 
-export default (signedIn = true) =>
+export default (signedIn = false) =>
   createAppContainer(
     createSwitchNavigator(
       {
