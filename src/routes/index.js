@@ -54,7 +54,7 @@ const App = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'CreatePost',
+    initialRouteName: 'Feed',
   },
 );
 

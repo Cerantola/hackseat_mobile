@@ -12,7 +12,6 @@ export const ScrollPage = styled.ScrollView`
 export const TitleDescriptionPostContainer = styled.View`
   width: 100%;
   padding-horizontal: 20px;
-  padding-top: 20px;
   padding-bottom: 10px;
 `;
 
@@ -23,19 +22,36 @@ export const TitleDescriptionPostText = styled.Text`
 
 export const InputContainer = styled.View`
   width: 100%;
-  height: 150px;
+  padding: 20px;
+`;
+
+export const InputContent = styled.View`
+  width: 100%;
+  height: 50px;
+  border-radius: 3px;
+  background-color: #fff;
+`;
+
+export const Input = styled.TextInput`
+  flex: 1;
+  padding-horizontal: 10px;
+`;
+
+export const InputTextAreaContainer = styled.View`
+  width: 100%;
+  height: 100px;
   padding-horizontal: 20px;
   border-radius: 3px;
 `;
 
-export const InputContent = styled.View`
+export const InputTextAreaContent = styled.View`
   width: 100%;
   height: 100%;
   border-radius: 3px;
   background-color: #fff;
 `;
 
-export const Input = styled.TextInput.attrs(() => ({
+export const InputTextArea = styled.TextInput.attrs(() => ({
   multiline: true,
   numberOfLines: 4,
 }))`
@@ -114,4 +130,25 @@ export const TrashExerciseIcon = styled.Image`
   width: 19px;
   height: 19px;
   tint-color: #c1c1c1;
+`;
+
+export const DifficultyContainer = styled.View`
+  width: 100%;
+  padding: 10px;
+`;
+
+export const DifficultyTextContainer = styled.View`
+  width: 100%;
+  padding-horizontal: 10px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+`;
+
+export const DifficultyText = styled.Text`
+  font-size: 12px;
+  color: #c1c1c1;
+`;
+
+export const DifficultyButtonText = styled.Text`
+  color: #00c3e0;
 `;
