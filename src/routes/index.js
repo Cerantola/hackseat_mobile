@@ -9,6 +9,7 @@ import PostDetails from '../pages/feed/components/post/components/postDetails';
 import Login from '../pages/login';
 import Header from '../components/header';
 import {RightText} from '../components/header/styles';
+import Exercicio from '../pages/exercicio';
 
 const signedIn = AsyncStorage.getItem('userlogged') && true;
 
@@ -48,6 +49,12 @@ const App = createStackNavigator(
     },
     PostDetails: {
       screen: PostDetails,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    CreateExercise: {
+      screen: Exercicio,
       navigationOptions: {
         header: null,
       },

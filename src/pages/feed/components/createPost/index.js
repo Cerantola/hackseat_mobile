@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import RNIcon from 'react-native-vector-icons/Ionicons';
 
 import Header from '../../../../components/header';
 import {
@@ -68,7 +69,10 @@ export default function CreatePost({navigation}) {
         )}
 
         <ButtonAddExercise onPress={addExercise}>
-          <TextAddExercise>Adicionar exercício +</TextAddExercise>
+          <TextAddExercise>
+            Adicionar exercício{'  '}
+            <RNIcon name={'md-add'} size={17} color={'#ffffff'} />
+          </TextAddExercise>
         </ButtonAddExercise>
       </ScrollPage>
 

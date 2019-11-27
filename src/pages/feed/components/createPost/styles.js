@@ -35,9 +35,9 @@ export const InputContent = styled.View`
   background-color: #fff;
 `;
 
-export const Input = styled.TextInput.attrs(() => ({
-  multiline: true,
-  numberOfLines: 4,
+export const Input = styled.TextInput.attrs(({multiline, numberOfLines}) => ({
+  multiline: multiline || true,
+  numberOfLines: numberOfLines || 4,
 }))`
   flex: 1;
   padding-horizontal: 10px;
