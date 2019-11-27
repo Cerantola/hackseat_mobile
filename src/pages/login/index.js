@@ -19,8 +19,8 @@ import {KeyboardSafeContainer} from '../register/styles';
 
 export default function Login({navigation}) {
   const [userLogged, setUserLogged] = useState({
-    email: '',
-    id: '',
+    email: 'user@1.com',
+    id: '2',
   });
 
   const handleChangeEmail = text => {
