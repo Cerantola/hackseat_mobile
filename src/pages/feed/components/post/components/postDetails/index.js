@@ -13,7 +13,6 @@ import {
   Number,
   Avaliacao,
   Separator,
-  Development,
   ExercisesContainer,
   Exercise,
   ExerciseText,
@@ -21,6 +20,7 @@ import {
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import {CheckBox} from 'react-native-elements';
+import {Alert} from 'react-native';
 
 export default function PostDetails({post}) {
   const [exercises, setExercises] = useState([
@@ -32,22 +32,37 @@ export default function PostDetails({post}) {
         {
           id: 1,
           description: 'Lorem ipsum dolor sit amet.',
+          correct: false,
         },
         {
           id: 2,
           description: 'Lorem ipsum dolor sit amet.',
+          correct: true,
         },
         {
           id: 3,
           description: 'Lorem ipsum dolor sit amet.',
+          correct: false,
         },
         {
           id: 4,
           description: 'Lorem ipsum dolor sit amet.',
+          correct: false,
         },
       ],
     },
   ]);
+
+  const selectAlternative = alternative => {
+    if (alternative.correct) {
+      Alert.alert(
+        'Parabéns você acertou.',
+        'Você ganhou pontos por ter respondido certo.',
+      );
+    } else {
+      Alert.alert('Que pena!', 'Você errou, mas não desista. Tente novamente.');
+    }
+  };
 
   return (
     <Container>
@@ -92,6 +107,7 @@ export default function PostDetails({post}) {
                     checkedIcon="dot-circle-o"
                     uncheckedIcon="circle-o"
                     // checked={this.state.checked}
+                    onPress={() => selectAlternative(alternative)}
                   />
                 ))}
               </Exercise>
@@ -106,8 +122,6 @@ export default function PostDetails({post}) {
               <Icon name={'dislike2'} size={22} color={'#232222'} />
               <Number>2</Number>
             </Avaliacao>
-
-            {/* <Development>Victor Manuel</Development> */}
           </Footer>
         </PostContainer>
       </ScrollPage>
