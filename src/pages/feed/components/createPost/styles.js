@@ -38,6 +38,7 @@ export const InputContent = styled.View`
 export const Input = styled.TextInput.attrs(({multiline, numberOfLines}) => ({
   multiline: multiline || true,
   numberOfLines: numberOfLines || 4,
+  textAlignVertical: 'top',
 }))`
   flex: 1;
   padding-horizontal: 10px;

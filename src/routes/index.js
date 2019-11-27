@@ -7,8 +7,7 @@ import Feed from '../pages/feed';
 import CreatePost from '../pages/feed/components/createPost';
 import PostDetails from '../pages/feed/components/post/components/postDetails';
 import Login from '../pages/login';
-import Header from '../components/header';
-import {RightText} from '../components/header/styles';
+import transitionConfig from '../config/transition';
 import Exercicio from '../pages/exercicio';
 
 const signedIn = AsyncStorage.getItem('userlogged') && true;
@@ -62,6 +61,7 @@ const App = createStackNavigator(
   },
   {
     initialRouteName: 'CreatePost',
+    transitionConfig,
   },
 );
 
