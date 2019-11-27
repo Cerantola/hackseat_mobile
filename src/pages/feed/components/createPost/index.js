@@ -18,19 +18,35 @@ import {
   TextButton,
   ContainerExercisesCreated,
   TitleExerciseContainer,
+  TitleExerciseContent,
   TitleExerciseText,
+  TrashExerciseContainer,
+  TrashExerciseIcon,
 } from './styles';
 
 export default function CreatePost({navigation}) {
   const [exercises, setExercises] = useState([
     {
       id: 1,
+      number: 1,
       title: 'Crie uma função que calcula a raiz quadrada de 5',
+    },
+    {
+      id: 2,
+      number: 2,
+      title: 'Crie um sistema que controla a fatura do cartão',
     },
   ]);
 
   const addExercise = () => {
     navigation.navigate('CreateExercise');
+  };
+
+  const removeExercise = index => {
+    const newExercises = [...exercises];
+
+    newExercises.splice(index, 1);
+    setExercises(newExercises);
   };
 
   return (
@@ -60,9 +76,22 @@ export default function CreatePost({navigation}) {
           <ContainerExercisesCreated>
             <TitleExerciseText>Exercícios criados</TitleExerciseText>
 
-            {exercises.map(exercise => (
+            {exercises.map((exercise, index) => (
               <TitleExerciseContainer>
-                <TitleExerciseText>{exercise.title}</TitleExerciseText>
+                <TitleExerciseContent>
+                  <TitleExerciseText>
+                    {exercise.number} - {exercise.title}
+                  </TitleExerciseText>
+                </TitleExerciseContent>
+
+                <TrashExerciseContainer onPress={() => removeExercise(index)}>
+                  <TrashExerciseIcon
+                    source={{
+                      uri:
+                        'https://icons-for-free.com/iconfiles/png/512/trash+bin+icon-1320086460670911435.png',
+                    }}
+                  />
+                </TrashExerciseContainer>
               </TitleExerciseContainer>
             ))}
           </ContainerExercisesCreated>
