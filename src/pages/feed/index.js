@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import AsyncStorage from '@react-native-community/async-storage';
 import {Container, List, CreatePost, CreateText} from './styles';
 import Header from '../../components/header';
 import Post from './components/post';
@@ -11,14 +11,18 @@ export default function Feed({navigation}) {
   const [posts, setPosts] = useState(Array.from(Array(6).keys()));
 
   const renderPost = ({item, index}) => <Post {...item} index={index} />;
-
+  async function logOff() {
+    AsyncStorage.removeItem('userLogged');
+    const data = await AsyncStorage.getItem('userLogged');
+    navigation.navigate('Sign');
+  }
   return (
     <Container>
       <Header
         backButton={false}
         rightContent={<RightText>Sair</RightText>}
         rightAction={() => {
-          // do logoff
+          logOff();
         }}
       />
 
