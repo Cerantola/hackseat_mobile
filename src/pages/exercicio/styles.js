@@ -27,7 +27,7 @@ export const Questao = styled.View`
 `;
 
 export const Correto = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: 0.8,
+  activeOpacity: 0.7,
 }))`
   border-width: 1px;
   margin: 5px;
@@ -35,8 +35,8 @@ export const Correto = styled.TouchableOpacity.attrs(() => ({
   height: 35px;
   align-items: center;
   justify-content: center;
-  border-color: ${({index}) => (index == 0 ? '#fff' : '#babaca')};
-  background-color: ${({index}) => (index == 0 ? '#2bed38' : 'transparent')};
+  border-color: ${({correct}) => (correct ? '#fff' : '#babaca')};
+  background-color: ${({correct}) => (correct ? '#2bed38' : 'transparent')};
   border-radius: 35px;
 `;
 
@@ -50,6 +50,7 @@ export const QuestaoInput = styled.TextInput`
 
 export const QuestaoText = styled.Text`
   font-size: 17px;
+  flex: 1;
 `;
 
 export const NovaOpcao = styled.View`

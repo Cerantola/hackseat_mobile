@@ -26,23 +26,48 @@ import {
   TextButton,
 } from '../feed/components/createPost/styles';
 import RNIcon from 'react-native-vector-icons/Ionicons';
-import {View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function Exercicio() {
   const [opcoes, setOpcoes] = useState([{}, {}]);
   const [novaOpcao, setNovaOpcao] = useState(false);
 
-  const renderOpcao = ({index}) => (
-    <Questao>
-      <Correto index={index}>
+  const adicionarOpcao = () => {
+    setNovaOpcao(false);
+    setOpcoes([...opcoes, {}]);
+  };
+
+  const removeOpcao = index => {
+    setOpcoes([...opcoes.filter((e, i) => i != index)]);
+  };
+
+  const handleChangeCorrectAnswer = (index, novo = false) => {
+    try {
+      let correctIndex = opcoes.findIndex(e => e.correct);
+      const _opcoes = [...opcoes];
+      _opcoes[correctIndex].correct = false;
+      novaOpcao && setNovaOpcao({...novaOpcao, correct: novo});
+
+      if (index >= 0) _opcoes[index].correct = true;
+
+      setOpcoes([..._opcoes]);
+    } catch (error) {}
+  };
+
+  const renderOpcao = ({item, index}) => (
+    <Questao key={index}>
+      <Correto
+        correct={item.correct}
+        onPress={() => handleChangeCorrectAnswer(-1, true)}>
         <RNIcon
           name={'md-checkmark'}
           size={22}
-          color={index == 0 ? '#fff' : '#babaca'}
+          color={item.correct ? '#fff' : '#babaca'}
         />
       </Correto>
       <QuestaoText> Testinho</QuestaoText>
+      <Botao onPress={() => removeOpcao(index)}>
+        <RNIcon name={'md-trash'} size={22} color={'#fff'} />
+      </Botao>
     </Questao>
   );
 
@@ -63,12 +88,18 @@ export default function Exercicio() {
             </InputContent>
           </InputContainer>
 
-          <List data={opcoes} renderItem={renderOpcao} />
+          <List
+            data={opcoes}
+            renderItem={renderOpcao}
+            keyExtractor={({index}) => index}
+          />
 
-          {novaOpcao && (
+          {novaOpcao != false && (
             <NovaOpcao>
               <Questao width={'100%'}>
-                <Correto>
+                <Correto
+                  correct={novaOpcao != false && novaOpcao.correct}
+                  onPress={() => handleChangeCorrectAnswer(-1, true)}>
                   <RNIcon name={'md-checkmark'} size={22} color={'#babaca'} />
                 </Correto>
                 <QuestaoInput />
@@ -78,12 +109,7 @@ export default function Exercicio() {
                 <Botao onPress={() => setNovaOpcao(false)}>
                   <RNIcon name={'md-trash'} size={22} color={'#fff'} />
                 </Botao>
-                <Botao
-                  bcolor={'#2bed38'}
-                  onPress={() => {
-                    setNovaOpcao(false);
-                    setOpcoes([...opcoes, {}]);
-                  }}>
+                <Botao bcolor={'#2bed38'} onPress={adicionarOpcao}>
                   <RNIcon name={'md-checkmark'} size={22} color={'#fff'} />
                 </Botao>
               </BotoesContainer>
