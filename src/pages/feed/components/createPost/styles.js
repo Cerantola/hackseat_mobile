@@ -54,6 +54,7 @@ export const InputTextAreaContent = styled.View`
 export const InputTextArea = styled.TextInput.attrs(() => ({
   multiline: true,
   numberOfLines: 4,
+  textAlignVertical: 'top',
 }))`
   flex: 1;
   padding-horizontal: 10px;
@@ -157,7 +158,8 @@ export const DifficultyText = styled.Text`
 `;
 
 export const DifficultyButtonText = styled.Text`
-  color: #00c3e0;
+  color: ${({selectedIndex, index}) =>
+    selectedIndex == index ? '#00c3e0' : '#232222'};
 `;
 
 export const CategoryContainer = styled.View`
