@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../../../../../../components/header';
 import {Container} from './styles';
 
-export default function PostDetails({}) {
+export default function PostDetails({post}) {
   return (
     <Container>
       <Header

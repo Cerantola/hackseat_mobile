@@ -152,3 +152,31 @@ export const DifficultyText = styled.Text`
 export const DifficultyButtonText = styled.Text`
   color: #00c3e0;
 `;
+
+export const CategoryContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  padding-horizontal: 20px;
+  padding-vertical: 10px;
+`;
+
+export const CategoryContent = styled.View`
+  flex: 1;
+  padding-bottom: 5px;
+  border-bottom-color: #c1c1c1;
+  border-bottom-width: 1px;
+`;
+
+export const CategoryIconContainer = styled.View`
+  width: 30px;
+  height: 30px;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom-color: #c1c1c1;
+  border-bottom-width: 1px;
+`;
+
+export const CategoryIcon = styled.Text`
+  font-size: 12px;
+  color: #c1c1c1;
+`;

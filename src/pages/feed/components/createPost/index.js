@@ -1,4 +1,7 @@
 import React, {useState} from 'react';
+import {Platform} from 'react-native';
+
+import RNIcon from 'react-native-vector-icons/Ionicons';
 
 import Header from '../../../../components/header';
 import {
@@ -28,10 +31,15 @@ import {
   DifficultyTextContainer,
   DifficultyText,
   DifficultyButtonText,
+  CategoryContainer,
+  CategoryContent,
+  CategoryIconContainer,
+  CategoryIcon,
+  Line,
 } from './styles';
 
 import {ButtonGroup} from 'react-native-elements';
-
+import RNPickerSelect from 'react-native-picker-select';
 export default function CreatePost({navigation}) {
   const [exercises, setExercises] = useState([
     {
@@ -51,6 +59,11 @@ export default function CreatePost({navigation}) {
   const button3 = () => <DifficultyButtonText>Dificil</DifficultyButtonText>;
 
   const buttons = [{element: button1}, {element: button2}, {element: button3}];
+  const categorias = [
+    {label: 'Javascript', value: 'javascrip'},
+    {label: 'ReactJS', value: 'reactjs'},
+    {label: 'React Native', value: 'reactnative'},
+  ];
 
   const updateIndex = selectedIndex => {
     setSelectedIndex(selectedIndex);
@@ -80,14 +93,12 @@ export default function CreatePost({navigation}) {
       <ScrollPage>
         <InputContainer>
           <InputContent>
-            <Input placeholder={'Digite o titulo do post'} />
+            <Input placeholder={'Digite o titulo'} />
           </InputContent>
         </InputContainer>
 
         <TitleDescriptionPostContainer>
-          <TitleDescriptionPostText>
-            Digite o conteúdo do post
-          </TitleDescriptionPostText>
+          <TitleDescriptionPostText>Digite o conteúdo</TitleDescriptionPostText>
         </TitleDescriptionPostContainer>
 
         <InputTextAreaContainer>
@@ -99,7 +110,7 @@ export default function CreatePost({navigation}) {
         <DifficultyContainer>
           <DifficultyTextContainer>
             <TitleDescriptionPostText>
-              Selecione a dificuldade do post
+              Selecione a dificuldade
             </TitleDescriptionPostText>
           </DifficultyTextContainer>
 
@@ -114,6 +125,30 @@ export default function CreatePost({navigation}) {
             selectedButtonStyle={{backgroundColor: '#232222'}}
           />
         </DifficultyContainer>
+
+        <TitleDescriptionPostContainer>
+          <TitleDescriptionPostText>
+            Selecione a categoria
+          </TitleDescriptionPostText>
+        </TitleDescriptionPostContainer>
+
+        <CategoryContainer>
+          <CategoryContent>
+            <RNPickerSelect
+              style={{color: '#000'}}
+              onValueChange={value => console.log(value)}
+              placeholder={{
+                label: 'Selecionar',
+                value: null,
+              }}
+              items={categorias}
+            />
+          </CategoryContent>
+
+          <CategoryIconContainer>
+            <CategoryIcon>></CategoryIcon>
+          </CategoryIconContainer>
+        </CategoryContainer>
 
         {exercises && exercises.length > 0 && (
           <ContainerExercisesCreated>
@@ -141,7 +176,10 @@ export default function CreatePost({navigation}) {
         )}
 
         <ButtonAddExercise onPress={addExercise}>
-          <TextAddExercise>Adicionar exercício +</TextAddExercise>
+          <TextAddExercise>
+            Adicionar exercício{'  '}
+            <RNIcon name={'md-add'} size={17} color={'#ffffff'} />
+          </TextAddExercise>
         </ButtonAddExercise>
       </ScrollPage>
 
