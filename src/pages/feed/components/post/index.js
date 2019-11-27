@@ -12,10 +12,15 @@ import {
   Separator,
   Desenvolvedor,
 } from './styles';
+import {withNavigation} from 'react-navigation';
 
-export default function Post({item, index}) {
+function Post({navigation, item, index}) {
+  const goToPostDetails = () => {
+    navigation.navigate('PostDetails', {post: item});
+  };
+
   return (
-    <Container key={index}>
+    <Container key={index} onPress={goToPostDetails}>
       <Header>
         <Dificuldade nivel={index > 4 ? 4 : index} />
         <Titulo>Como funciona um aplicativo</Titulo>
@@ -75,3 +80,5 @@ export default function Post({item, index}) {
     </Container>
   );
 }
+
+export default withNavigation(Post);

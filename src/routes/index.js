@@ -60,8 +60,7 @@ const App = createStackNavigator(
     },
   },
   {
-    initialRouteName: 'CreatePost',
-    transitionConfig,
+    initialRouteName: 'PostDetails',
   },
 );
 
