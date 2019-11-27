@@ -55,6 +55,13 @@ export const TextAddExercise = styled.Text`
   color: #c1c1c1;
 `;
 
+export const ErrorText = styled.Text`
+  color: #f88;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 5px;
+`;
+
 export const ContainerButton = styled.View`
   width: 100%;
   padding: 20px;
