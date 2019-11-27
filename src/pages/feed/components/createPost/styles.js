@@ -82,6 +82,14 @@ export const ContainerExercisesCreated = styled.View`
 
 export const TitleExerciseContainer = styled.View`
   width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const TitleExerciseContent = styled.View`
+  flex: 1;
+  margin-right: 10px;
 `;
 
 export const TitleExerciseText = styled.Text.attrs(() => ({
@@ -92,4 +100,18 @@ export const TitleExerciseText = styled.Text.attrs(() => ({
   color: #c1c1c1;
   font-weight: bold;
   margin-top: 10px;
+`;
+
+export const TrashExerciseContainer = styled.TouchableOpacity`
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  align-items: flex-end;
+  justify-content: center;
+`;
+
+export const TrashExerciseIcon = styled.Image`
+  width: 19px;
+  height: 19px;
+  tint-color: #c1c1c1;
 `;
