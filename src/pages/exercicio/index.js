@@ -24,16 +24,24 @@ import {
   ContainerButton,
   Button,
   TextButton,
+  ErrorText,
 } from '../feed/components/createPost/styles';
 import RNIcon from 'react-native-vector-icons/Ionicons';
+import Opcao from './components/opcao';
 
 export default function Exercicio() {
-  const [opcoes, setOpcoes] = useState([{}, {}]);
+  const [opcoes, setOpcoes] = useState([]);
   const [novaOpcao, setNovaOpcao] = useState(false);
+  const [error, setError] = useState(false);
+  const [title, setTitle] = useState('');
 
   const adicionarOpcao = () => {
     setNovaOpcao(false);
-    setOpcoes([...opcoes, {}]);
+    setOpcoes([...opcoes, novaOpcao]);
+  };
+
+  const handleChangeNovaOpcaoText = text => {
+    setNovaOpcao({...novaOpcao, text});
   };
 
   const removeOpcao = index => {
@@ -41,34 +49,48 @@ export default function Exercicio() {
   };
 
   const handleChangeCorrectAnswer = (index, novo = false) => {
+    let correctIndex = opcoes.findIndex(e => e.correct);
+    const _opcoes = [...opcoes];
     try {
-      let correctIndex = opcoes.findIndex(e => e.correct);
-      const _opcoes = [...opcoes];
       _opcoes[correctIndex].correct = false;
-      novaOpcao && setNovaOpcao({...novaOpcao, correct: novo});
-
-      if (index >= 0) _opcoes[index].correct = true;
-
-      setOpcoes([..._opcoes]);
     } catch (error) {}
+    novaOpcao && setNovaOpcao({...novaOpcao, correct: novo});
+
+    if (index >= 0) _opcoes[index].correct = true;
+
+    setOpcoes([..._opcoes]);
+  };
+
+  const handleSetTitle = text => {
+    setTitle(text);
+    error == 'title' && setError(false);
+  };
+
+  const validateFields = () => {
+    let errorField = [];
+    !title.length && errorField.push('title');
+    !opcoes.length && errorField.push('no_options');
+    !opcoes.filter(e => e.correct).length && errorField.push('correct');
+
+    return {errorField, error: errorField.length > 0};
+  };
+
+  const adicionaExercicio = () => {
+    const errors = validateFields();
+    if (errors.error) {
+      setError(errors.errorField[0]);
+      return;
+    }
   };
 
   const renderOpcao = ({item, index}) => (
-    <Questao key={index}>
-      <Correto
-        correct={item.correct}
-        onPress={() => handleChangeCorrectAnswer(-1, true)}>
-        <RNIcon
-          name={'md-checkmark'}
-          size={22}
-          color={item.correct ? '#fff' : '#babaca'}
-        />
-      </Correto>
-      <QuestaoText> Testinho</QuestaoText>
-      <Botao onPress={() => removeOpcao(index)}>
-        <RNIcon name={'md-trash'} size={22} color={'#fff'} />
-      </Botao>
-    </Questao>
+    <Opcao
+      index={index}
+      item={item}
+      novo={false}
+      handleChangeCorrectAnswer={handleChangeCorrectAnswer}
+      removeOpcao={removeOpcao}
+    />
   );
 
   return (
@@ -84,7 +106,12 @@ export default function Exercicio() {
 
           <InputContainer>
             <InputContent>
-              <Input numberOfLines={2} />
+              <Input
+                numberOfLines={2}
+                value={title}
+                onChangeText={handleSetTitle}
+                blurOnSubmit={true}
+              />
             </InputContent>
           </InputContainer>
 
@@ -96,14 +123,16 @@ export default function Exercicio() {
 
           {novaOpcao != false && (
             <NovaOpcao>
-              <Questao width={'100%'}>
-                <Correto
-                  correct={novaOpcao != false && novaOpcao.correct}
-                  onPress={() => handleChangeCorrectAnswer(-1, true)}>
-                  <RNIcon name={'md-checkmark'} size={22} color={'#babaca'} />
-                </Correto>
-                <QuestaoInput />
-              </Questao>
+              <Opcao
+                index={-1}
+                item={novaOpcao}
+                novo={true}
+                handleChangeCorrectAnswer={handleChangeCorrectAnswer}
+                removeOpcao={removeOpcao}
+                changeText={handleChangeNovaOpcaoText}
+                adicionarOpcao={adicionarOpcao}
+                full
+              />
 
               <BotoesContainer>
                 <Botao onPress={() => setNovaOpcao(false)}>
@@ -117,7 +146,7 @@ export default function Exercicio() {
           )}
 
           {!novaOpcao && opcoes.length < 4 && (
-            <ButtonAddExercise onPress={() => setNovaOpcao(true)}>
+            <ButtonAddExercise onPress={() => setNovaOpcao({})}>
               <TextAddExercise>
                 Adicionar alternativa{'  '}
                 <RNIcon name={'md-add'} size={17} color={'#ffffff'} />
@@ -127,7 +156,16 @@ export default function Exercicio() {
         </ScrollPage>
 
         <ContainerButton>
-          <Button>
+          {error == 'title' && (
+            <ErrorText>Adicione um título para seu exercício</ErrorText>
+          )}
+          {error == 'no_option' && (
+            <ErrorText>Adicione pelo menos uma alternativa</ErrorText>
+          )}
+          {error == 'correct' && (
+            <ErrorText>Adicione pelo menos uma alternativa correta</ErrorText>
+          )}
+          <Button onPress={adicionaExercicio}>
             <TextButton>Adicionar</TextButton>
           </Button>
         </ContainerButton>
