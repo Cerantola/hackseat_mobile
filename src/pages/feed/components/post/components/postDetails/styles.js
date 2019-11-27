@@ -80,11 +80,6 @@ export const Avaliacao = styled.View`
   align-items: flex-end;
 `;
 
-export const Development = styled.Text`
-  color: #232222;
-  font-size: 14px;
-`;
-
 export const ExercisesContainer = styled.View`
   width: 95%;
 `;
