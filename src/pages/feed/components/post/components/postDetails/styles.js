@@ -5,7 +5,7 @@ export const Container = styled.View`
   background-color: #333;
 `;
 
-export const PostContainer = styled.TouchableOpacity.attrs(() => ({
+export const PostContainer = styled.View.attrs(() => ({
   activeOpacity: 0.8,
 }))`
   margin: 12px 0;
@@ -15,6 +15,10 @@ export const PostContainer = styled.TouchableOpacity.attrs(() => ({
   width: 85%;
   align-self: center;
   background-color: #f5f5f5;
+`;
+
+export const ScrollPage = styled.ScrollView`
+  flex: 1;
 `;
 
 export const PostHeader = styled.View`
@@ -27,7 +31,7 @@ export const PostHeader = styled.View`
   border-bottom-color: #232222;
 `;
 
-export const Dificuldade = styled.View`
+export const Difficulty = styled.View`
   width: 25px;
   height: 25px;
   border-radius: 25px;
@@ -36,9 +40,62 @@ export const Dificuldade = styled.View`
   margin-right: 10px;
 `;
 
-export const Titulo = styled.Text`
+export const Title = styled.Text`
   color: #232222;
   font-size: 16px;
+`;
+
+export const DescriptionPost = styled.Text`
+  color: #232222;
+  font-size: 13px;
+  margin: 9px 16px;
+  line-height: 20px;
+`;
+
+export const Footer = styled.View`
+  margin-top: 6px;
+  flex-direction: row;
+  align-items: flex-end;
+  align-self: center;
+  width: 95%;
+  padding-bottom: 9px;
+  justify-content: space-between;
+`;
+
+export const Number = styled.Text`
+  color: #232222;
+  font-size: 14px;
+  margin: 0 5px;
+`;
+
+export const Separator = styled.View`
+  height: 20px;
+  border-left-width: 2px;
+  border-color: #232222;
+  margin: 0 10px;
+`;
+
+export const Avaliacao = styled.View`
+  flex-direction: row;
+  align-items: flex-end;
+`;
+
+export const Development = styled.Text`
+  color: #232222;
+  font-size: 14px;
+`;
+
+export const ExercisesContainer = styled.View`
+  width: 95%;
+`;
+export const Exercise = styled.View`
+  width: 100%;
+`;
+export const ExerciseText = styled.Text`
+  color: #232222;
+  font-size: 13px;
+  margin: 9px 16px;
+  line-height: 20px;
 `;
 
 function getDificultyColor(level) {
