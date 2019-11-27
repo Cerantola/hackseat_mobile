@@ -16,13 +16,17 @@ import {
   ExercisesContainer,
   Exercise,
   ExerciseText,
+  OnPressIcon,
 } from './styles';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import {CheckBox} from 'react-native-elements';
 import {Alert} from 'react-native';
 
-export default function PostDetails({post}) {
+export default function PostDetails({navigation}) {
+  const [alternativeActived, setAlternativeActived] = useState(null);
+  const post = navigation.getParam('post');
+  console.log('post', post);
   const [exercises, setExercises] = useState([
     {
       id: 1,
@@ -54,9 +58,11 @@ export default function PostDetails({post}) {
   ]);
 
   const selectAlternative = alternative => {
+    setAlternativeActived(alternative.id);
+
     if (alternative.correct) {
       Alert.alert(
-        'Parabéns você acertou.',
+        'Parabéns você acertou',
         'Você ganhou pontos por ter respondido certo.',
       );
     } else {
@@ -68,7 +74,7 @@ export default function PostDetails({post}) {
     <Container>
       <Header
         backButton={true}
-        title={'Victor Manuel'}
+        title={post.post_author.name}
         rightAction={() => {
           // do logoff
         }}
@@ -77,23 +83,11 @@ export default function PostDetails({post}) {
       <ScrollPage>
         <PostContainer>
           <PostHeader>
-            <Difficulty nivel={2} />
-            <Title>Como funciona um aplicativo</Title>
+            <Difficulty nivel={post.post_difficulty.level} />
+            <Title>{post.title}</Title>
           </PostHeader>
 
-          <DescriptionPost>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
-            velit vitae nibh consectetur tincidunt. Sed lacinia consectetur nunc
-            nec pretium. Pellentesque facilisis nisi ligula, lobortis fermentum
-            quam imperdiet et. In gravida dui odio, vel maximus diam
-            sollicitudin at. Aenean iaculis bibendum leo non feugiat. Morbi ac
-            tellus efficitur, interdum lorem at, vestibulum elit. Integer tempus
-            augue eget ante tincidunt, id maximus augue tincidunt. Praesent
-            ultricies, ante eget sodales egestas, mauris dui dictum leo, eget
-            rhoncus tellus ante et magna. Interdum et malesuada fames ac ante
-            ipsum primis in faucibus. Nunc felis massa, dictum interdum mi
-            vitae, sagittis pulvinar magna.
-          </DescriptionPost>
+          <DescriptionPost>{post.text}</DescriptionPost>
 
           <ExercisesContainer>
             {exercises.map(exercise => (
@@ -106,7 +100,7 @@ export default function PostDetails({post}) {
                     title={alternative.description}
                     checkedIcon="dot-circle-o"
                     uncheckedIcon="circle-o"
-                    // checked={this.state.checked}
+                    checked={alternativeActived == alternative.id}
                     onPress={() => selectAlternative(alternative)}
                   />
                 ))}
@@ -117,9 +111,13 @@ export default function PostDetails({post}) {
           <Footer>
             <Avaliacao>
               <Number>52</Number>
-              <Icon name={'like2'} size={22} color={'#232222'} />
+              <OnPressIcon>
+                <Icon name={'like2'} size={22} color={'#232222'} />
+              </OnPressIcon>
               <Separator />
-              <Icon name={'dislike2'} size={22} color={'#232222'} />
+              <OnPressIcon>
+                <Icon name={'dislike2'} size={22} color={'#232222'} />
+              </OnPressIcon>
               <Number>2</Number>
             </Avaliacao>
           </Footer>

@@ -1,16 +1,35 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
-import {Container, List, CreatePost, CreateText} from './styles';
+import {Container, List, CreatePost, CreateText, Loading} from './styles';
 import Header from '../../components/header';
 import Post from './components/post';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {View} from 'react-native';
 import {RightText} from '../../components/header/styles';
+import Axios from 'axios';
 
 export default function Feed({navigation}) {
-  const [posts, setPosts] = useState(Array.from(Array(6).keys()));
+  const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
-  const renderPost = ({item, index}) => <Post {...item} index={index} />;
+  async function getPosts() {
+    try {
+      const {data} = await Axios.get(
+        `http://10.100.83.39:3333/post?page=${page}`,
+      );
+      setPosts(data);
+      setPage(page++);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  const renderPost = ({item, index}) => <Post item={item} index={index} />;
 
   return (
     <Container>
@@ -34,6 +53,7 @@ export default function Feed({navigation}) {
             <CreateText>Novo post</CreateText>
           </CreatePost>
         )}
+        ListFooterComponent={() => loading && <Loading />}
       />
     </Container>
   );

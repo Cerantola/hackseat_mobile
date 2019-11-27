@@ -30,3 +30,10 @@ export const CreateText = styled.Text`
   margin: 0 8px;
   color: #fff;
 `;
+
+export const Loading = styled.ActivityIndicator.attrs(() => ({
+  size: 'large',
+  color: '#00c3ef',
+}))`
+  margin-vertical: 10px;
+`;

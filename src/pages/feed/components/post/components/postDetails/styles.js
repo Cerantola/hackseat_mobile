@@ -35,8 +35,7 @@ export const Difficulty = styled.View`
   width: 25px;
   height: 25px;
   border-radius: 25px;
-  background-color: ${({dificultyLevel = 2}) =>
-    getDificultyColor(dificultyLevel)};
+  background-color: ${({dificultyLevel}) => getDificultyColor(dificultyLevel)};
   margin-right: 10px;
 `;
 
@@ -83,9 +82,11 @@ export const Avaliacao = styled.View`
 export const ExercisesContainer = styled.View`
   width: 95%;
 `;
+
 export const Exercise = styled.View`
   width: 100%;
 `;
+
 export const ExerciseText = styled.Text`
   color: #232222;
   font-size: 13px;
@@ -93,6 +94,12 @@ export const ExerciseText = styled.Text`
   line-height: 20px;
 `;
 
+export const OnPressIcon = styled.TouchableOpacity``;
+
 function getDificultyColor(level) {
-  return level == 0 ? '#f22929' : level == 1 ? '#f0e32e' : '#2bed38';
+  return level == 'avançado'
+    ? '#f22929'
+    : level == 'intermediário'
+    ? '#f0e32e'
+    : '#2bed38';
 }

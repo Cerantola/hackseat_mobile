@@ -26,8 +26,7 @@ export const Dificuldade = styled.View`
   width: 25px;
   height: 25px;
   border-radius: 25px;
-  background-color: ${({dificultyLevel = 2}) =>
-    getDificultyColor(dificultyLevel)};
+  background-color: ${({dificultyLevel}) => getDificultyColor(dificultyLevel)};
   margin-right: 10px;
 `;
 
@@ -42,6 +41,14 @@ export const Preview = styled.Text.attrs(() => ({
   color: #232222;
   font-size: 13px;
   margin: 9px 16px;
+  line-height: 20px;
+`;
+
+export const Category = styled.Text`
+  color: #232222;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-horizontal: 16px;
   line-height: 20px;
 `;
 
@@ -78,6 +85,12 @@ export const Desenvolvedor = styled.Text`
   font-size: 14px;
 `;
 
+export const OnPressIcon = styled.TouchableOpacity``;
+
 function getDificultyColor(level) {
-  return level == 0 ? '#f22929' : level == 1 ? '#f0e32e' : '#2bed38';
+  return level == 'avançado'
+    ? '#f22929'
+    : level == 'intermediário'
+    ? '#f0e32e'
+    : '#2bed38';
 }
