@@ -28,11 +28,7 @@ export default function Opcao({
         />
       </Correto>
       {novo ? (
-        <QuestaoInput
-          onSubmitEditing={adicionarOpcao}
-          onChangeText={changeText}
-          value={item.text}
-        />
+        <QuestaoInput onChangeText={changeText} value={item.text} />
       ) : (
         <>
           <QuestaoText>{item.text}</QuestaoText>

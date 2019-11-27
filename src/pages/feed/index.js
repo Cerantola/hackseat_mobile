@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 
 import {Container, List, CreatePost, CreateText, Loading} from './styles';
+
+import AsyncStorage from '@react-native-community/async-storage';
 import Header from '../../components/header';
 import Post from './components/post';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -25,6 +27,12 @@ export default function Feed({navigation}) {
     }
   }
 
+  async function logOff() {
+    AsyncStorage.removeItem('userLogged');
+    await AsyncStorage.getItem('userLogged');
+    navigation.navigate('Sign');
+  }
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -37,7 +45,7 @@ export default function Feed({navigation}) {
         backButton={false}
         rightContent={<RightText>Sair</RightText>}
         rightAction={() => {
-          // do logoff
+          logOff();
         }}
       />
 
